@@ -33,11 +33,11 @@ bot.on("ready", async  () => {
 });
 
 bot.on("message", async message => {
+    const prefix = "d!";
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;
     if(!message.content.startsWith(prefix)) return;
 
-    const prefix = "d!";
     let messageArray = message.content.split(" ");
     let args = messageArray.slice(1);
     let cmd = messageArray[0]; 
