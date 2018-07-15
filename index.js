@@ -31,7 +31,7 @@ bot.on("ready", async  () => {
 });
 
 //  GUILD MEMBER ADD
-client.on("guildMemberAdd" , member => {
+bot.on("guildMemberAdd" , member => {
 
     member.guild.channels.get('464823082180411408').setName(`Total Users: ${member.guild.memberCount}`)
     let humans = member.guild.members.filter(m => !m.user.bot).size;
@@ -41,7 +41,7 @@ client.on("guildMemberAdd" , member => {
 });
 
 //  GUILD MEMBER REMOVE
-client.on("guildMemberRemove" , member => {
+bot.on("guildMemberRemove" , member => {
     
     member.guild.channels.get('464823082180411408').setName(`Total Users: ${member.guild.memberCount}`)
     let humans = member.guild.members.filter(m => !m.user.bot).size;
@@ -71,5 +71,4 @@ bot.on("message", async message => {
 
 });
 
-  
 bot.login(process.env.token);
