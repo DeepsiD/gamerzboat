@@ -31,7 +31,7 @@ bot.on("ready", async  () => {
 });
 
 //  GUILD MEMBER ADD
-bot.on("guildMemberAdd" , member => {
+client.on("guildMemberAdd" , member => {
 
     member.guild.channels.get('464823082180411408').setName(`Total Users: ${member.guild.memberCount}`)
     let humans = member.guild.members.filter(m => !m.user.bot).size;
