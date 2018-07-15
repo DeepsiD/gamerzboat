@@ -73,19 +73,3 @@ bot.on("message", async message => {
 
   
 bot.login(process.env.token);
-
-
-// TO MAKE COMMAND HANDLER
-
-// const Discord = require("discord.js");
-
-// module.exports.run = async (bot , message , args) => {
-    
-// }
-
-// module.exports.help = {
-//     name: ""
-// }
-
-// FOR !COMMAND HELP
-// if(!args[0] || args[0 == "help"]) return message.channel.send(`Usage: ${prefix} `);
