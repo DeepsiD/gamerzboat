@@ -1,5 +1,3 @@
-// Invite Link:https://discordapp.com/api/oauth2/authorize?client_id=461135909715181588&permissions=0&scope=bot
-
 const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
@@ -23,13 +21,33 @@ fs.readdir("./commands/" , (err , files) => {
 
 })
 
+// BOT INITIALIZATION
 bot.on("ready", async  () => {
     console.log(`${bot.user.username} is online in ${bot.guilds.size} servers!`);
     bot.user.setActivity("Gamerz", {type: "WATCHING"});
 
     let logchannel = bot.channels.get('465830446844870656');
     logchannel.send(`${bot.user.username} loaded now!`);
+});
 
+//  GUILD MEMBER ADD
+bot.on("guildMemberAdd" , member => {
+
+    member.guild.channels.get('464823082180411408').setName(`Total Users: ${member.guild.memberCount}`)
+    let humans = member.guild.members.filter(m => !m.user.bot).size;
+    member.guild.channels.get('464823129663864832').setName(`Member Count: ${humans}`)
+    let bots = member.guild.members.filter(m => m.user.bot).size;
+    member.guild.channels.get('464823151474507776').setName(`Bot Count: ${bots}`)
+});
+
+//  GUILD MEMBER REMOVE
+client.on("guildMemberRemove" , member => {
+    
+    member.guild.channels.get('464823082180411408').setName(`Total Users: ${member.guild.memberCount}`)
+    let humans = member.guild.members.filter(m => !m.user.bot).size;
+    member.guild.channels.get('464823129663864832').setName(`Member Count: ${humans}`)
+    let bots = member.guild.members.filter(m => m.user.bot).size;
+    member.guild.channels.get('464823151474507776').setName(`Bot Count: ${bots}`)
 });
 
 bot.on("message", async message => {
